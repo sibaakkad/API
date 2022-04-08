@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="api.js"></script>
+  <title>Api</title>
+
+</head>
+
+<body>
+  <div class="top-container">
+    <h1>PULL DATA FROM API </h1>
+    <label>Choose an age:</label>
+    <select name="mySelect" id="mySelect" onchange="myFunction()">
+      <option></option>
+      <option value="option1">Between 0 and 30 years old</option>
+      <option value="option2">Between 31 and 50 years old</option>
+      <option value="option3">Over 51 years old </option>
+    </select>
+    <br><br>
+  </div>
+  <div class="container" id="container">
+    <table id="tableID">
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</body>
+
+</html>
