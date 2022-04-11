@@ -1,10 +1,20 @@
-var x
 var option1, option2, option3
-var userData
 
-function myFunction() {
+//Api'den verileri çekmek.
+function getData() {
+  fetch('https://randomuser.me/api/?results=100').then(
+    response => response.json()
+  ).then(responseJosn => {
+    //Yaşa göre filtreleme
+    option1 = responseJosn.results.filter(item => item.dob.age >= 0 && item.dob.age <= 30)
+    option2 = responseJosn.results.filter(item => item.dob.age >= 31 && item.dob.age <= 50)
+    option3 = responseJosn.results.filter(item => item.dob.age >= 51)
+  });
+}
+//Arayüzde yeni seçenek seçilirse bu fonksiyonu çalışacak
+function baseFunction() {
   clearTable()
-  x = document.getElementById("mySelect").value;
+  var x = document.getElementById("mySelect").value;
   if (x == 'option1') {
     editToTable(option1)
   }
@@ -15,12 +25,14 @@ function myFunction() {
     editToTable(option3)
   }
 }
+//Tabloyu silme
 function clearTable() {
   var tb = document.getElementById('tableID');
   while (tb.rows.length > 1) {
     tb.deleteRow(1);
   }
 }
+//Kullancıların yaşlarına göre tabloya ekleme
 function editToTable(option) {
 
   option.forEach(item => {
@@ -53,10 +65,4 @@ function editToTable(option) {
     newCell.appendChild(newText);
   });
 }
-fetch('https://randomuser.me/api/?results=100').then(
-  response => response.json()
-).then(responseJosn => {
-  option1 = responseJosn.results.filter(item => item.dob.age >= 0 && item.dob.age <= 30)
-  option2 = responseJosn.results.filter(item => item.dob.age >= 31 && item.dob.age <= 50)
-  option3 = responseJosn.results.filter(item => item.dob.age >= 51)
-});
+getData()
